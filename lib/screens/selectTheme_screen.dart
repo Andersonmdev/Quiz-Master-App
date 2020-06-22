@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:quizmasterApp/components/theme_widget.dart';
+import 'package:quizmasterApp/models/question_model.dart';
 import 'package:quizmasterApp/models/theme_model.dart';
+import 'package:quizmasterApp/screens/question_screen.dart';
 
-class SelectTheme extends StatelessWidget {
+class SelectThemeScreen extends StatelessWidget {
   final List<ThemeModel> _themes = [
-    ThemeModel(id: 1, name: 'Todos os temas', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 2, name: 'Tema aleatório', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 3, name: 'História', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 4, name: 'Filmes', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 5, name: 'Séries', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 6, name: 'Esporte', imageTheme: 'assets/images/theme_icon.png'),
-    ThemeModel(id: 7, name: 'Jogos', imageTheme: 'assets/images/theme_icon.png'),
+    ThemeModel(id: 1, name: 'Todos os temas', imageTheme: 'assets/images/theme_icon.png', 
+    questions: [
+      QuestionModel(question: 'Pergunta 1', answers: ['Res 1', 'Res 2', 'Res 3', 'Res 4']),
+      QuestionModel(question: 'Pergunta 2', answers: ['Res 1', 'Res 2', 'Res 3', 'Res 4']),
+    ]),
+    ThemeModel(id: 1, name: 'Aleatorio', imageTheme: 'assets/images/theme_icon.png', 
+    questions: [
+      QuestionModel(question: 'Pergunta 3', answers: ['Res 1', 'Res 2', 'Res 3', 'Res 4']),
+      QuestionModel(question: 'Pergunta 4', answers: ['Res 1', 'Res 2', 'Res 3', 'Res 4']),
+    ]),
   ];
 
   @override
@@ -42,6 +47,12 @@ class SelectTheme extends StatelessWidget {
               children: _themes.map((theme) {
                 return ThemeWidget(
                   theme: theme,
+                  onClick: (theme) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QuestionScreen(theme: theme)),
+                    );
+                  },
                 );
               }).toList(),
             ),

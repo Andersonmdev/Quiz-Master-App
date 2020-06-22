@@ -3,15 +3,17 @@ import 'package:quizmasterApp/models/theme_model.dart';
 
 class ThemeWidget extends StatelessWidget {
   final ThemeModel theme;
+  final void Function(ThemeModel) onClick;
 
   ThemeWidget({
     @required this.theme,
+    @required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {print(theme.name);},
+      onTap: () => onClick(theme),
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Container(

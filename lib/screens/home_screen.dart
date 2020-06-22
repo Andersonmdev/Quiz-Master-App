@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SelectTheme()),
+                      MaterialPageRoute(builder: (context) => SelectThemeScreen()),
                     );
                   },
                   color: Color(0xFF0C6493),
